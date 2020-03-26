@@ -3,12 +3,19 @@ import Pagination from "../components/Pagination";
 import RowInput from "../components/RowInput";
 
 const DefinitionMontant = props => {
-  const { handlePageNext, handlePagePrev, handleChange, step, values } = props;
+  const {
+    handlePageNext,
+    handlePagePrev,
+    handleChange,
+    numstep,
+    params,
+    values
+  } = props;
 
   return (
     <>
       <h2>
-        {step.title}
+        {params.title}
         <i className="infos"></i>
       </h2>
       <div className="padContent">
@@ -45,7 +52,8 @@ const DefinitionMontant = props => {
         />
       </div>
       <Pagination
-        step={step}
+        params={params}
+        numstep={numstep}
         handlePageNext={handlePageNext}
         handlePagePrev={handlePagePrev}
       />

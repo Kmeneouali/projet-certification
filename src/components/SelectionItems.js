@@ -2,11 +2,11 @@ import React from "react";
 import SelectionItem from "./SelectionItem";
 
 const SelectionItems = props => {
-  const { step, values, handleChange } = props;
-  const selectedOption = values[step.id];
+  const { params, values, handleChange } = props;
+  const selectedOption = values[params.id];
 
-  const idStep = step.id;
-  const choix = step.choix;
+  const idStep = params.id;
+  const choix = params.choix;
 
   return (
     <div className="selectionItems">

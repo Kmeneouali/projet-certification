@@ -4,7 +4,7 @@ import params from "./../../configs/prams";
 import Navigation from "./Navigation";
 
 // import Cookies from "js-cookie";
-import Axios from "axios";
+
 class Content extends Component {
   // State Global de l'application
   state = {
@@ -24,40 +24,20 @@ class Content extends Component {
     data: {}
   };
 
-  getData = async id => {
-    Axios.get("https://vicopo.selfbuild.fr/cherche/" + id)
-      .then(response => {
-        this.setState({ data: response.data });
-      })
-      .catch(error => {
-        console.log(error);
-      });
-  };
-
-  // Montage construction componentDidMount
-  componentDidMount() {
-    this.getData("94800");
-  }
-
-  //Mis a jour
-  componentDidUpdate() {}
-
-  // Démontage
-  componentWillUnmount() {}
-
-  //  methode pour changer le stat de toute les inputs
+  //  Événement déclenché lorsque la valeur d'entrée est modifiée en fonction de input
   handleChange = input => e => {
+    console.log("input");
     const value = input === "isAccepted" ? e.target.checked : e.target.value;
     this.setState({ [input]: value });
   };
 
-  //  méthode pour changer la stat step lorsque vous cliquez sur le bouton Suivant
+  //  méthode pour changer le state step lorsque vous cliquez sur le bouton Suivant
   handlePageNext = () => {
     const { step } = this.state;
     this.setState({ step: step + 1 });
   };
 
-  //  méthode pour changer la stat step lorsque vous cliquez sur le bouton Précédent
+  //  méthode pour changer le state step lorsque vous cliquez sur le bouton Précédent
   handlePagePrev = () => {
     const { step } = this.state;
     this.setState({ step: step - 1 });
@@ -95,8 +75,10 @@ class Content extends Component {
     };
     const { step } = this.state;
     const _step = { step };
+
     return (
       //  est un composant qui contient les Routes
+
       <Navigation
         values={values}
         step={_step.step}

@@ -1,23 +1,17 @@
 import React from "react";
 import { Link } from "react-router-dom";
 const Pagination = props => {
-  const { step } = props;
-  const handlePageNext = () => {
-    props.handlePageNext();
-  };
-  const handlePagePrev = () => {
-    props.handlePagePrev();
-  };
-  // pagePrev={steps[step].pagePrev}
-  // pageNext={steps[step].pageNext}
-  //
-  const pagePrev = step.pagePrev;
-  const pageNext = step.pageNext;
+  const { params, numstep, handlePagePrev, handlePageNext } = props;
+  let value = numstep === 0 ? 0 : (numstep / 7) * 100;
+  value = value.toFixed(0).concat("%");
+
+  const pagePrev = params.pagePrev;
+  const pageNext = params.pageNext;
 
   return (
     <div className="pagination">
       {pagePrev ? (
-        <Link id="btPagiPrev" onClick={handlePagePrev} to={pagePrev}>
+        <Link id="btPagiPrev" onClick={() => handlePagePrev()} to={pagePrev}>
           Précédent :
         </Link>
       ) : (
@@ -28,12 +22,14 @@ const Pagination = props => {
         <>
           <div className="pagiBulle">
             <div id="pagiContent">
-              <div id="pagiStep">0 %</div>
+              <div id="pagiStep" style={{ left: value }}>
+                {value}
+              </div>
 
-              <div id="pagiAvancement"></div>
+              <div id="pagiAvancement" style={{ width: value }}></div>
             </div>
           </div>
-          <Link id="btPagiNext" onClick={handlePageNext} to={pageNext}>
+          <Link id="btPagiNext" onClick={() => handlePageNext()} to={pageNext}>
             Suivant
           </Link>
         </>

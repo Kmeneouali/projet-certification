@@ -5,11 +5,18 @@ import RowInput from "../components/RowInput";
 import Pagination from "../components/Pagination";
 
 const VosCordonnees = props => {
-  const { handlePageNext, handlePagePrev, handleChange, step } = props;
+  const {
+    handlePageNext,
+    handlePagePrev,
+    handleChange,
+    numstep,
+    params,
+    values
+  } = props;
   return (
     <>
       <h2>
-        {step.title}
+        {params.title}
         <i className="infos"></i>
       </h2>
       <div className="padContent">
@@ -26,6 +33,7 @@ const VosCordonnees = props => {
           type="inputText"
           stylePlus="rowGrey"
           id="email"
+          values={values}
           handleChange={handleChange}
         />
 
@@ -43,7 +51,8 @@ const VosCordonnees = props => {
         </div>
       </div>
       <Pagination
-        step={step}
+        params={params}
+        numstep={numstep}
         handlePageNext={handlePageNext}
         handlePagePrev={handlePagePrev}
       />

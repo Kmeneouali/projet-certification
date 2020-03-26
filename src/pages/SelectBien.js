@@ -2,12 +2,19 @@ import React from "react";
 import SelectionItems from "../components/SelectionItems";
 import Pagination from "../components/Pagination";
 const SelectBien = props => {
-  const { values, handleChange, handlePageNext, handlePagePrev, step } = props;
+  const {
+    values,
+    handleChange,
+    handlePageNext,
+    handlePagePrev,
+    params,
+    numstep
+  } = props;
 
   return (
     <>
       <h2>
-        {step.title}
+        {params.title}
         <i className="infos"></i>
       </h2>
 
@@ -15,12 +22,13 @@ const SelectBien = props => {
         <SelectionItems
           values={values}
           handleChange={handleChange}
-          step={step}
+          params={params}
         />
         <Pagination
           handlePageNext={handlePageNext}
           handlePagePrev={handlePagePrev}
-          step={step}
+          params={params}
+          numstep={numstep}
         />
       </div>
     </>

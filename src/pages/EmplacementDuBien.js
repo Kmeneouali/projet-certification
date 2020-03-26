@@ -1,29 +1,24 @@
 import React from "react";
-
 import Pagination from "../components/Pagination";
-import RowInput from "../components/RowInput";
 import RowInputSelect from "../components/RowInputSelect";
+import AutoCompleteText from "../components/AutoCompleteText";
 const EmplacementDuBien = props => {
-  const { handlePageNext, handlePagePrev, handleChange, step, values } = props;
+  const {
+    handlePageNext,
+    handlePagePrev,
+    handleChange,
+    params,
+    numstep,
+    values
+  } = props;
 
   return (
     <>
       <h2>
-        {step.title}
+        {params.title}
         <i className="infos"></i>
       </h2>
       <div className="padContent">
-        {/* <RowInput
-          label="Dans quel pays se situe votre projet ? "
-          type="select"
-          countries={countries}
-          id="paysBien"
-          value="64"
-          values={values}
-          handleChange={handleChange}
-          stylePlus="rowGrey"
-          value
-        /> */}
         <RowInputSelect
           label="Dans quel pays se situe votre projet ? "
           type="select"
@@ -33,12 +28,25 @@ const EmplacementDuBien = props => {
           handleChange={handleChange}
           stylePlus="rowGrey"
         />
-        <RowInput
+        <AutoCompleteText
           label="Ville ou code postal "
           id="codePostal"
           values={values}
           handleChange={handleChange}
         />
+
+        {/* <RowInput
+          label="Ville ou code postal "
+          id="codePostal"
+          values={values}
+          handleChange={handleChange}
+        /> */}
+        {/* <div>
+          {data &&
+            data.cities.map((d, index) => {
+              return <p>{d.city}</p>;
+            })}
+        </div> */}
         <div className="conseilTxt">
           <p>
             La connaissance du code postal du bien permettra de calculer les
@@ -52,9 +60,10 @@ const EmplacementDuBien = props => {
         </div>
       </div>
       <Pagination
-        step={step}
+        params={params}
         handlePageNext={handlePageNext}
         handlePagePrev={handlePagePrev}
+        numstep={numstep}
       />
     </>
   );

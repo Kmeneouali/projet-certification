@@ -173,7 +173,6 @@ h2 .infos {
   display: block;
   border-radius: 100%;
   position: absolute;
-  left: 76px;
 }
 #pagiAvancement {
   background-color: #ffdfb1;
@@ -293,4 +292,20 @@ h2 .infos {
 }
 .gras {
   font-weight: 600;
+}
+
+.select ul {
+  text-align: left;
+  border-top: 10px solid var(--grey);
+}
+.select ul::before {
+  content: "";
+}
+.select li {
+  padding: 5px 5px;
+  cursor: pointer;
+}
+.select li:hover {
+  text-decoration: underline;
+  background-color: var(--grey);
 }
