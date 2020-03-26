@@ -17,7 +17,7 @@ class AutoCompleteText extends Component {
         .sort()
         .filter(v => regex.test(v.city));
     }
-    this.props.handleChange(id);
+
     this.setState({ suggestions: suggestions, textValue: value });
   };
 
