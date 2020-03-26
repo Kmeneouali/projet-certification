@@ -12,7 +12,8 @@ const Navigation = props => {
     step,
     handlePageNext,
     handlePagePrev,
-    params
+    params,
+    hanldeClickSelectSuggestions
   } = props;
   const _params = Object.keys(params);
   let _step = "step".concat(step);
@@ -45,6 +46,7 @@ const Navigation = props => {
                     handleChange={handleChange}
                     handlePageNext={handlePageNext}
                     handlePagePrev={handlePagePrev}
+                    hanldeClickSelectSuggestions={hanldeClickSelectSuggestions}
                   />
                 </Route>
               );

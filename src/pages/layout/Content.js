@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import params from "./../../configs/prams";
-
+import Axios from "axios";
 import Navigation from "./Navigation";
 
 // import Cookies from "js-cookie";
@@ -21,14 +21,36 @@ class Content extends Component {
     montantTraveau: "",
     fraisNotaire: "",
     budgetTotal: "",
-    data: {}
+    suggestions: []
   };
-
+  getData = async codePostal => {
+    Axios.get("https://vicopo.selfbuild.fr/cherche/" + codePostal)
+      .then(response => {
+        console.log(response.data.cities);
+        this.setState({ suggestions: response.data.cities });
+      })
+      .catch(error => {
+        console.log(error);
+      });
+  };
   //  Événement déclenché lorsque la valeur d'entrée est modifiée en fonction de input
   handleChange = input => e => {
-    console.log("input");
     const value = input === "isAccepted" ? e.target.checked : e.target.value;
-    this.setState({ [input]: value });
+    let suggestions = [];
+    if (input === "codePostal") {
+      this.getData(value);
+
+      if (value.length > 0) {
+        const regex = new RegExp(`^${value}`, "i");
+        suggestions = this.state.suggestions
+          .sort()
+          .filter(v => regex.test(v.city));
+      }
+    }
+    this.setState({ [input]: value, suggestions: suggestions });
+  };
+  hanldeClickSelectSuggestions = value => {
+    this.setState({ codePostal: value, suggestions: [] });
   };
 
   //  méthode pour changer le state step lorsque vous cliquez sur le bouton Suivant
@@ -56,7 +78,8 @@ class Content extends Component {
       montantAcquisition,
       montantTraveau,
       fraisNotaire,
-      budgetTotal
+      budgetTotal,
+      suggestions
     } = this.state;
 
     const values = {
@@ -71,7 +94,8 @@ class Content extends Component {
       montantAcquisition,
       montantTraveau,
       fraisNotaire,
-      budgetTotal
+      budgetTotal,
+      suggestions
     };
     const { step } = this.state;
     const _step = { step };
@@ -86,6 +110,7 @@ class Content extends Component {
         handleChange={this.handleChange}
         handlePageNext={this.handlePageNext}
         handlePagePrev={this.handlePagePrev}
+        hanldeClickSelectSuggestions={this.hanldeClickSelectSuggestions}
       />
     );
     //

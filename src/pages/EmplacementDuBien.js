@@ -9,7 +9,8 @@ const EmplacementDuBien = props => {
     handleChange,
     params,
     numstep,
-    values
+    values,
+    hanldeClickSelectSuggestions
   } = props;
 
   return (
@@ -33,6 +34,7 @@ const EmplacementDuBien = props => {
           id="codePostal"
           values={values}
           handleChange={handleChange}
+          hanldeClickSelectSuggestions={hanldeClickSelectSuggestions}
         />
 
         {/* <RowInput
