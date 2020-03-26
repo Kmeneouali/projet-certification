@@ -1,39 +1,47 @@
-import React, { Component } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
-class Pagination extends Component {
-  render() {
-    const pagePrev = this.props.pagePrev;
-    const pageNext = this.props.pageNext;
+const Pagination = props => {
+  const { step } = props;
+  const handlePageNext = () => {
+    props.handlePageNext();
+  };
+  const handlePagePrev = () => {
+    props.handlePagePrev();
+  };
+  // pagePrev={steps[step].pagePrev}
+  // pageNext={steps[step].pageNext}
+  //
+  const pagePrev = step.pagePrev;
+  const pageNext = step.pageNext;
 
-    return (
-      <div className="pagination">
-        {pagePrev ? (
-          <Link id="btPagiPrev" to={pagePrev}>
-            Précédent :
-          </Link>
-        ) : (
-          <span></span>
-        )}
+  return (
+    <div className="pagination">
+      {pagePrev ? (
+        <Link id="btPagiPrev" onClick={handlePagePrev} to={pagePrev}>
+          Précédent :
+        </Link>
+      ) : (
+        <span></span>
+      )}
 
-        {pageNext ? (
-          <>
-            <div className="pagiBulle">
-              <div id="pagiContent">
-                <div id="pagiStep">0 %</div>
+      {pageNext ? (
+        <>
+          <div className="pagiBulle">
+            <div id="pagiContent">
+              <div id="pagiStep">0 %</div>
 
-                <div id="pagiAvancement"></div>
-              </div>
+              <div id="pagiAvancement"></div>
             </div>
-            <Link id="btPagiNext" to={pageNext}>
-              Suivant
-            </Link>
-          </>
-        ) : (
-          <span></span>
-        )}
-      </div>
-    );
-  }
-}
+          </div>
+          <Link id="btPagiNext" onClick={handlePageNext} to={pageNext}>
+            Suivant
+          </Link>
+        </>
+      ) : (
+        <span></span>
+      )}
+    </div>
+  );
+};
 
 export default Pagination;

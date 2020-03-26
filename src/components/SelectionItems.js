@@ -1,33 +1,29 @@
-import React, { Component } from "react";
+import React from "react";
 import SelectionItem from "./SelectionItem";
 
-class SelectionItems extends Component {
-  state = { selectedOption: this.props.steps.choix[0].id };
+const SelectionItems = props => {
+  const { step, values, handleChange } = props;
+  const selectedOption = values[step.id];
 
-  handleOptionChange = event => {
-    this.setState({
-      selectedOption: event.target.value
-    });
-  };
+  const idStep = step.id;
+  const choix = step.choix;
 
-  render() {
-    const choix = this.props.steps.choix;
-    return (
-      <div className="selectionItems">
-        {choix.map((selection, index) => {
-          return (
-            <SelectionItem
-              key={index}
-              id={selection.id}
-              title={selection.title}
-              checked={this.state.selectedOption === selection.id}
-              onChange={this.handleOptionChange}
-            />
-          );
-        })}
-      </div>
-    );
-  }
-}
+  return (
+    <div className="selectionItems">
+      {choix.map((selection, index) => {
+        return (
+          <SelectionItem
+            idStep={idStep}
+            key={index}
+            id={selection.id}
+            title={selection.title}
+            checked={selectedOption === selection.id}
+            handleChange={handleChange}
+          />
+        );
+      })}
+    </div>
+  );
+};
 
 export default SelectionItems;

@@ -1,29 +1,29 @@
-export const steps = {
+export const params = {
   step0: {
-    id: "TypeDuBien",
+    id: "typeDuBien",
     title: "Type du bien",
-    pageNext: "/EtatDuBien",
+    pageNext: "/etatDuBien",
 
     choix: [
-      { id: "maison", title: "Maison", first: true },
+      { id: "maison", title: "Maison" },
       { id: "appartement", title: "Appartement" }
     ]
   },
   step1: {
-    id: "EtatDuBien",
+    id: "etatDuBien",
     title: "Etat du bien",
-    pageNext: "/UsageDuBien",
-    pagePrev: "/TypeDeBien",
+    pageNext: "/usageDuBien",
+    pagePrev: "/typeDuBien",
     choix: [
       { id: "ancien", title: "Ancien" },
       { id: "neuf", title: "Neuf" }
     ]
   },
   step2: {
-    id: "UsageDuBien",
+    id: "usageDuBien",
     title: "Usage du bien",
-    pageNext: "/VotreSituation",
-    pagePrev: "/EtatDuBien",
+    pageNext: "/votreSituation",
+    pagePrev: "/etatDuBien",
     choix: [
       { id: "ResidencePrincipale", title: "Résidence principale" },
       { id: "ResidenceSecondaire", title: "Résidence secondaire" },
@@ -31,10 +31,10 @@ export const steps = {
     ]
   },
   step3: {
-    id: "VotreSituation",
+    id: "votreSituation",
     title: "Votre situation actuelle",
-    pageNext: "/EmplacementDuBien",
-    pagePrev: "/UsageDuBien",
+    pageNext: "/emplacementDuBien",
+    pagePrev: "/usageDuBien",
     choix: [
       { id: "Locataire", title: "Locataire" },
       { id: "Proprietaire", title: "Propriétaire" },
@@ -43,26 +43,26 @@ export const steps = {
     ]
   },
   step4: {
-    id: "EmplacementDuBien",
+    id: "emplacementDuBien",
     title: "Ou se situe le bien à financer",
-    pageNext: "/DefinitionMontant",
-    pagePrev: "/VotreSituation"
+    pageNext: "/definitionMontant",
+    pagePrev: "/votreSituation"
   },
   step5: {
-    id: "DefinitionMontant",
+    id: "definitionMontant",
     title: "Définissons le montant de votre projet",
-    pageNext: "/VosCordonnees",
-    pagePrev: "/EmplacementDuBien"
+    pageNext: "/vosCordonnees",
+    pagePrev: "/emplacementDuBien"
   },
   step6: {
-    id: "VosCordonnees",
+    id: "vosCordonnees",
     title: "Vos Cordonnees",
-    pageNext: "/LastStep",
-    pagePrev: "/EmplacementDuBien"
+    pageNext: "/lastStep",
+    pagePrev: "/emplacementDuBien"
   },
   step7: {
-    id: "LastStep",
+    id: "lastStep",
     title: "Et voila, la formulaire est terminé "
   }
 };
-export default steps;
+export default params;

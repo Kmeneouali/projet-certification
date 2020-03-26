@@ -7,9 +7,8 @@ class Header extends Component {
         <div className="content-wrapper">
           <div className="top-logo">
             <div className="left-logo">
-              <a href="#">
-                <img src={Logo} alt="meilleurtaux" />
-              </a>
+              <img src={Logo} alt="meilleurtaux" />
+
               <div className="baseline">
                 Crédit immobilier : 5 mn pour obtenir le meilleur taux
               </div>

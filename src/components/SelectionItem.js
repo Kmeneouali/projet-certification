@@ -1,23 +1,21 @@
-import React, { Component } from "react";
+import React from "react";
 
-class SelectionItem extends Component {
-  render() {
-    const selected = this.props.checked ? "selected" : "";
+const SelectionItem = props => {
+  const { checked, id, idStep, title, handleChange } = props;
+  const selected = checked ? "selected" : "";
 
-    return (
-      <div className={`selectionItem ${selected} `}>
-        <input
-          type="radio"
-          name={this.props.id}
-          id={this.props.id}
-          value={this.props.id}
-          checked={this.props.checked}
-          onChange={this.props.onChange}
-        />
-        <label>{this.props.title}</label>
-      </div>
-    );
-  }
-}
+  return (
+    <div className={`selectionItem ${selected} `}>
+      <input
+        type="radio"
+        id={id}
+        value={id}
+        checked={checked}
+        onChange={handleChange(idStep)}
+      />
+      <label>{title}</label>
+    </div>
+  );
+};
 
 export default SelectionItem;
