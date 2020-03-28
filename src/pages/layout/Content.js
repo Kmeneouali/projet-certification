@@ -23,7 +23,7 @@ class Content extends Component {
       fraisNotaire: "",
       budgetTotal: 0,
       montantAcquisition: "",
-
+      idDemande: "",
       emailError: "",
       isAcceptedError: "",
       codePostalError: "",
@@ -107,12 +107,24 @@ class Content extends Component {
   //  méthode pour changer le state step lorsque vous cliquez sur le bouton Suivant
   handlePageNext = (numstep, _inputs) => {
     let conteur = 0;
+    // const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+
+    //   if (value === "" || re.test(String(value).toLowerCase())) {
+    //     this.setState({ [input]: value, suggestions: suggestions });
     if (_inputs) {
       _inputs.map(input => {
         if (this.state[input] === "") {
           this.setState({ [input.concat("Error")]: "ce champ est requis" });
           conteur = conteur + 1;
         }
+        // if (
+        //   input === "email" &&
+        //   re.test(String(this.state[input]).toLowerCase()) === true
+        // ) {
+        //   this.setState({ [input.concat("Error")]: "ce champ est requis" });
+        //   conteur = conteur + 1;
+        // }
+
         if (!this.state[input]) {
           this.setState({
             [input.concat("Error")]: "vous devez accepter les conditions !"
@@ -123,6 +135,9 @@ class Content extends Component {
     }
     if (conteur === 0) {
       numstep = Number(numstep) + 1;
+      if (numstep === 7) {
+        this.handleSubmit();
+      }
     }
     Cookies.set("step", numstep);
     this.setState({ step: numstep });
@@ -130,6 +145,9 @@ class Content extends Component {
     return numstep;
   };
 
+  handleSubmit = () => {
+    this.setState({ idDemande: "21087694" });
+  };
   //  méthode pour changer le state step lorsque vous cliquez sur le bouton Précédent
   handlePagePrev = _inputs => {
     const { step } = this.state;
@@ -155,6 +173,7 @@ class Content extends Component {
       paysBien,
       codePostal,
       montantAcquisition,
+      idDemande,
       montantTraveau,
       fraisNotaire,
       budgetTotal,
@@ -179,6 +198,7 @@ class Content extends Component {
       paysBien,
       codePostal,
       montantAcquisition,
+      idDemande,
       montantTraveau,
       fraisNotaire,
       budgetTotal,

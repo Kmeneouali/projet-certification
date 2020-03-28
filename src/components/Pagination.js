@@ -48,11 +48,7 @@ const Pagination = props => {
               <div id="pagiAvancement" style={{ width: value }}></div>
             </div>
           </div>
-          {/* <Link
-            id="btPagiNext"
-            onClick={() => handlePageNext(numstep, _inputs)}
-            to={pageNext}
-          > */}
+
           <Link
             id="btPagiNext"
             to={location => ({ ...location, pathname: pageNext })}

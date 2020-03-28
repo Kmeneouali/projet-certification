@@ -100,6 +100,7 @@ const Navigation = props => {
                     handleChange={handleChange}
                     handlePageNext={handlePageNext}
                     handlePagePrev={handlePagePrev}
+                    values={values}
                   />
                 </Route>
               );
