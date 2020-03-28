@@ -10,7 +10,8 @@ const EmplacementDuBien = props => {
     params,
     numstep,
     values,
-    hanldeClickSelectSuggestions
+    hanldeClickSelectSuggestions,
+    inputs
   } = props;
 
   return (
@@ -37,18 +38,6 @@ const EmplacementDuBien = props => {
           hanldeClickSelectSuggestions={hanldeClickSelectSuggestions}
         />
 
-        {/* <RowInput
-          label="Ville ou code postal "
-          id="codePostal"
-          values={values}
-          handleChange={handleChange}
-        /> */}
-        {/* <div>
-          {data &&
-            data.cities.map((d, index) => {
-              return <p>{d.city}</p>;
-            })}
-        </div> */}
         <div className="conseilTxt">
           <p>
             La connaissance du code postal du bien permettra de calculer les
@@ -66,6 +55,7 @@ const EmplacementDuBien = props => {
         handlePageNext={handlePageNext}
         handlePagePrev={handlePagePrev}
         numstep={numstep}
+        inputs={inputs}
       />
     </>
   );

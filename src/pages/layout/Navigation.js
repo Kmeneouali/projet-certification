@@ -1,5 +1,6 @@
 import React from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+
 import EmplacementDuBien from "../EmplacementDuBien";
 import DefinitionMontant from "../DefinitionMontant";
 import VosCordonnees from "../VosCordonnees";
@@ -7,15 +8,18 @@ import LastStep from "../LastStep";
 import SelectBien from "../SelectBien";
 const Navigation = props => {
   const {
+    params,
     values,
-    handleChange,
     step,
+    handleChange,
     handlePageNext,
     handlePagePrev,
-    params,
-    hanldeClickSelectSuggestions
+    hanldeClickSelectSuggestions,
+    handleBlur
   } = props;
+
   const _params = Object.keys(params);
+
   let _step = "step".concat(step);
   return (
     <>
@@ -47,6 +51,7 @@ const Navigation = props => {
                     handlePageNext={handlePageNext}
                     handlePagePrev={handlePagePrev}
                     hanldeClickSelectSuggestions={hanldeClickSelectSuggestions}
+                    inputs={["codePostal"]}
                   />
                 </Route>
               );
@@ -62,6 +67,8 @@ const Navigation = props => {
                     handleChange={handleChange}
                     handlePageNext={handlePageNext}
                     handlePagePrev={handlePagePrev}
+                    handleBlur={handleBlur}
+                    inputs={["montantAcquisition"]}
                   />
                 </Route>
               );
@@ -76,7 +83,9 @@ const Navigation = props => {
                     handleChange={handleChange}
                     handlePageNext={handlePageNext}
                     handlePagePrev={handlePagePrev}
+                    handleBlur={handleBlur}
                     values={values}
+                    inputs={["isAccepted", "email"]}
                   />
                 </Route>
               );
@@ -110,6 +119,15 @@ const Navigation = props => {
             }
           })}
         </Switch>
+        {/* {_step !== 7 ? (
+          <Pagination
+            handlePageNext={handlePageNext}
+            handlePagePrev={handlePagePrev}
+            params={params[_step]}
+            numstep={step}
+            inputs={["toto"]}
+          />
+        ) : null} */}
       </Router>
     </>
   );

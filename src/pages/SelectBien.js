@@ -8,7 +8,8 @@ const SelectBien = props => {
     handlePageNext,
     handlePagePrev,
     params,
-    numstep
+    numstep,
+    inputs
   } = props;
 
   return (
@@ -29,6 +30,7 @@ const SelectBien = props => {
           handlePagePrev={handlePagePrev}
           params={params}
           numstep={numstep}
+          inputs={inputs}
         />
       </div>
     </>

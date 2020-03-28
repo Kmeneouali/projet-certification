@@ -1,17 +1,36 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
+
 const Pagination = props => {
-  const { params, numstep, handlePagePrev, handlePageNext } = props;
+  let location = useLocation();
+  const { params, numstep, handlePagePrev, handlePageNext, inputs } = props;
+  // calcul du pourcentage de la barre de progression
   let value = numstep === 0 ? 0 : (numstep / 7) * 100;
   value = value.toFixed(0).concat("%");
+  // liste des id input pour les valider
+  const _inputs = inputs !== null ? inputs : [];
 
-  const pagePrev = params.pagePrev;
-  const pageNext = params.pageNext;
+  let pagePrev = params.pagePrev;
+  let pageNext = params.pageNext;
+  const handlepageNext = () => {
+    const nextStep = handlePageNext(numstep, _inputs);
+
+    if (numstep === nextStep) {
+      pageNext = location.pathname;
+    } else {
+      pagePrev = params.pagePrev;
+      pageNext = params.pageNext;
+    }
+  };
 
   return (
     <div className="pagination">
       {pagePrev ? (
-        <Link id="btPagiPrev" onClick={() => handlePagePrev()} to={pagePrev}>
+        <Link
+          id="btPagiPrev"
+          onClick={() => handlePagePrev(_inputs)}
+          to={pagePrev}
+        >
           Précédent :
         </Link>
       ) : (
@@ -29,7 +48,16 @@ const Pagination = props => {
               <div id="pagiAvancement" style={{ width: value }}></div>
             </div>
           </div>
-          <Link id="btPagiNext" onClick={() => handlePageNext()} to={pageNext}>
+          {/* <Link
+            id="btPagiNext"
+            onClick={() => handlePageNext(numstep, _inputs)}
+            to={pageNext}
+          > */}
+          <Link
+            id="btPagiNext"
+            to={location => ({ ...location, pathname: pageNext })}
+            onClick={() => handlepageNext()}
+          >
             Suivant
           </Link>
         </>

@@ -29,7 +29,7 @@ body {
 #header {
   background: var(--white);
   border-bottom: 5px solid var(--grey);
-  margin-bottom: 50px;
+  margin-bottom: 20px;
 }
 #header .content-wrapper {
   height: 90px;
@@ -57,12 +57,13 @@ img {
   flex-direction: column;
 
   margin: 50px;
+  margin-top: 20px;
 }
 #wrapper h2 {
   color: var(--orange);
   font-weight: 700;
   font-size: 24px;
-  margin-bottom: 30px;
+  margin-bottom: 20px;
   display: block;
   text-transform: uppercase;
 }
@@ -114,8 +115,8 @@ h2 .infos {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  padding: 40px;
-  margin-top: 40px;
+  padding: 10px;
+  margin-top: 10px;
 }
 .pagination #btPagiPrev {
   margin-top: 10px;
@@ -196,7 +197,7 @@ h2 .infos {
   align-items: stretch;
   width: 100%;
   background: var(--white);
-  padding: 40px;
+  padding: 20px;
   border-radius: 5px;
   box-shadow: 0 0 5px 0 var(--grey);
 }
@@ -308,4 +309,16 @@ h2 .infos {
 .select li:hover {
   text-decoration: underline;
   background-color: var(--grey);
+}
+.icon-error {
+  font-size: 21px;
+  padding-left: 10px;
+  font-size: 16px;
+  color: red;
+}
+.rowInput .icon-check {
+  font-size: 21px;
+  padding-left: 30px;
+  font-size: 16px;
+  color: green;
 }

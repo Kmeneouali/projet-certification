@@ -1,7 +1,8 @@
 import React from "react";
 import desktop from "../resources/img/visuel-desktop-email.jpg";
 import RowInput from "../components/RowInput";
-
+import { faExclamation } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Pagination from "../components/Pagination";
 
 const VosCordonnees = props => {
@@ -11,8 +12,11 @@ const VosCordonnees = props => {
     handleChange,
     numstep,
     params,
-    values
+    values,
+    handleBlur,
+    inputs
   } = props;
+  const boxShadow = values["isAcceptedError"] ? "0 0 5px 0 red" : "";
   return (
     <>
       <h2>
@@ -35,12 +39,19 @@ const VosCordonnees = props => {
           id="email"
           values={values}
           handleChange={handleChange}
+          handleBlur={handleBlur}
         />
 
         <div className="rowInputAccept">
+          {values["isAcceptedError"] ? (
+            <div className="icon-error">
+              <FontAwesomeIcon icon={faExclamation} />
+            </div>
+          ) : null}
           <input
             type="checkbox"
             id="isAccepted"
+            style={{ textAlign: "right", boxShadow: boxShadow }}
             onChange={handleChange("isAccepted")}
           />
           <p>
@@ -55,6 +66,7 @@ const VosCordonnees = props => {
         numstep={numstep}
         handlePageNext={handlePageNext}
         handlePagePrev={handlePagePrev}
+        inputs={inputs}
       />
     </>
   );

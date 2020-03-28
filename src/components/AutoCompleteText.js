@@ -1,5 +1,7 @@
 import React from "react";
-
+// get our fontawesome imports
+import { faExclamation } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 const AutoCompleteText = props => {
   const {
     values,
@@ -8,6 +10,8 @@ const AutoCompleteText = props => {
     hanldeClickSelectSuggestions,
     handleChange
   } = props;
+
+  const boxShadow = values.codePostalError ? "0 0 5px 0 red" : "";
   const renderSuggestions = () => {
     if (values.suggestions.length === 0) {
       return null;
@@ -42,9 +46,17 @@ const AutoCompleteText = props => {
           id={id}
           value={values[id]}
           onChange={handleChange(id)}
+          style={{ boxShadow: boxShadow }}
         />
+
         {renderSuggestions()}
       </div>
+      <div style={{ paddingLeft: "20px" }}></div>
+      {values.codePostalError ? (
+        <div className="icon-error">
+          <FontAwesomeIcon icon={faExclamation} />
+        </div>
+      ) : null}
     </div>
   );
 };

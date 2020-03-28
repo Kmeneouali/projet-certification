@@ -9,7 +9,9 @@ const DefinitionMontant = props => {
     handleChange,
     numstep,
     params,
-    values
+    handleBlur,
+    values,
+    inputs
   } = props;
 
   return (
@@ -26,6 +28,8 @@ const DefinitionMontant = props => {
           id="montantAcquisition"
           values={values}
           handleChange={handleChange}
+          placeholder="0"
+          handleBlur={handleBlur}
         />
         {/* <span>€</span> */}
         <RowInput
@@ -34,6 +38,8 @@ const DefinitionMontant = props => {
           id="montantTraveau"
           values={values}
           handleChange={handleChange}
+          placeholder="0"
+          handleBlur={handleBlur}
         />
         <RowInput
           label="Frais de notaire "
@@ -42,6 +48,8 @@ const DefinitionMontant = props => {
           values={values}
           stylePlus="rowGrey"
           handleChange={handleChange}
+          placeholder="0"
+          handleBlur={handleBlur}
         />
         <RowInput
           label="Budget total estimé du projet "
@@ -49,6 +57,9 @@ const DefinitionMontant = props => {
           id="budgetTotal"
           values={values}
           handleChange={handleChange}
+          placeholder="0"
+          readonly="readOnly"
+          handleBlur={handleBlur}
         />
       </div>
       <Pagination
@@ -56,6 +67,7 @@ const DefinitionMontant = props => {
         numstep={numstep}
         handlePageNext={handlePageNext}
         handlePagePrev={handlePagePrev}
+        inputs={inputs}
       />
     </>
   );
