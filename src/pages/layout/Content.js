@@ -146,7 +146,31 @@ class Content extends Component {
   };
 
   handleSubmit = () => {
-    this.setState({ idDemande: "21087694" });
+    Axios.post(
+      "https://projetcertification-backend.herokuapp.com/demande/create",
+      {
+        typeDuBien: this.state.typeDuBien,
+        etatDuBien: this.state.etatDuBien,
+        usageDuBien: this.state.usageDuBien,
+        votreSituation: this.state.votreSituation,
+        email: this.state.email,
+        paysBien: this.state.paysBien,
+        codePostal: this.state.codePostal,
+        montantAcquisition: this.state.montantAcquisition,
+        montantTraveau: this.state.montantTraveau,
+        fraisNotaire: this.state.fraisNotaire,
+        budgetTotal: this.state.budgetTotal
+      }
+    )
+      .then(response => {
+        console.log(response.data); // Affichera la réponse du serveur
+        this.setState({ idDemande: response.data.idDemande });
+      })
+      .catch(error => {
+        console.log(error); // Affichera d'eventuelles erreurs, notamment en cas de problème de connexion Internet.
+      });
+
+    // this.setState({ idDemande: "21087694" });
   };
   //  méthode pour changer le state step lorsque vous cliquez sur le bouton Précédent
   handlePagePrev = _inputs => {
